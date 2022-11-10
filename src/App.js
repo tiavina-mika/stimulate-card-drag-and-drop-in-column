@@ -16,6 +16,7 @@ import "./styles.css";
  */
 const updateProdData = (sourceDate, destinationDate) => {
   const newProdDataPlanning = [];
+  // get the column from the drag start (source)
   const sourceDay = oldProdDataPlanning.find((day) => day.date === sourceDate);
   console.log("oldProdDataPlanning", oldProdDataPlanning);
 
@@ -25,6 +26,7 @@ const updateProdData = (sourceDate, destinationDate) => {
       (card) => card.id === cardItem.id
     );
     let newDlcDateDiff;
+    // check if the copy (drag) is backward or forward
     const isNewDateAfterOldDate = dayjs(sourceDate).isAfter(
       dayjs(destinationDate)
     );
@@ -56,9 +58,13 @@ const updateProdData = (sourceDate, destinationDate) => {
       newProdDataPlanning.push({
         ...day,
         cards: {
+          // other product types
           ...day.cards,
+          // the product type of the current card
           [cardItem.productType]: [
+            // other cards from this product type
             ...day.cards[cardItem.productType],
+            // the new card to the source
             newCardWithNewDlcs
           ]
         }
@@ -72,6 +78,7 @@ const updateProdData = (sourceDate, destinationDate) => {
         ...day,
         cards: {
           ...day.cards,
+          // remove the card from the destination
           [cardItem.productType]: day.cards[cardItem.productType].filter(
             (card) => card.id !== cardItem.id
           )
