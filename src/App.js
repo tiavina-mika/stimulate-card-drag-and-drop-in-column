@@ -10,19 +10,18 @@ import "./styles.css";
 /**
  * copy a card from a column to another column
  * the card should be copied only in the same product type
+ * each column is a day
  * @param {*} sourceDate
  * @param {*} destinationDate
  */
 const updateProdData = (sourceDate, destinationDate) => {
   const newProdDataPlanning = [];
-  const destinationDay = oldProdDataPlanning.find(
-    (day) => day.date === sourceDate
-  );
+  const sourceDay = oldProdDataPlanning.find((day) => day.date === sourceDate);
   console.log("oldProdDataPlanning", oldProdDataPlanning);
 
   for (const day of oldProdDataPlanning) {
     // get current card from card list of a day
-    const newCard = destinationDay.cards[cardItem.productType].find(
+    const newCard = sourceDay.cards[cardItem.productType].find(
       (card) => card.id === cardItem.id
     );
     let newDlcDateDiff;
