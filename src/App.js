@@ -25,7 +25,7 @@ const updateProdData = (sourceDate, destinationDate) => {
     const newCard = destinationDay.cards[cardItem.productType].find(
       (card) => card.id === cardItem.id
     );
-    let newDlcDateDiff = dayjs(sourceDate).diff(destinationDate, "day");
+    let newDlcDateDiff;
     const isNewDateAfterOldDate = dayjs(sourceDate).isAfter(
       dayjs(destinationDate)
     );
