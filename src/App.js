@@ -7,6 +7,12 @@ import {
 } from "./data";
 import "./styles.css";
 
+/**
+ * copy a card from a column to another column
+ * the card should be copied only in the same product type
+ * @param {*} sourceDate
+ * @param {*} destinationDate
+ */
 const updateProdData = (sourceDate, destinationDate) => {
   const newProdDataPlanning = [];
   const destinationDay = oldProdDataPlanning.find(
